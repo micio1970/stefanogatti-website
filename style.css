@@ -1,0 +1,509 @@
+/* ===================================
+   Reset & Base
+   =================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===================================
+   Variables
+   =================================== */
+
+:root {
+    --color-bg: #FFFFFF;
+    --color-text: #1a1a1a;
+    --color-text-secondary: #666666;
+    --color-accent: #0066cc;
+    --color-border: #e5e5e5;
+    --color-newsletter-bg: #000000;
+    --color-terminal-green: #00ff00;
+
+    --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-mono: 'Courier New', monospace;
+
+    --max-width: 820px;
+    --section-spacing: 64px;
+}
+
+/* ===================================
+   Typography
+   =================================== */
+
+body {
+    font-family: var(--font-stack);
+    font-size: 1rem;
+    line-height: 1.7;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 0.75rem;
+}
+
+h2 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    line-height: 1.3;
+}
+
+h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 2rem 0 1rem;
+    line-height: 1.4;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+/* ===================================
+   Links
+   =================================== */
+
+a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:focus {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* ===================================
+   Layout
+   =================================== */
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.section {
+    margin-bottom: var(--section-spacing);
+}
+
+/* ===================================
+   Compact Header
+   =================================== */
+
+header {
+    padding-top: 48px;
+    padding-bottom: 48px;
+    max-height: 40vh;
+    overflow: visible;
+}
+
+.profile-image {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 16px;
+    object-fit: cover;
+}
+
+.header-text {
+    overflow: hidden;
+}
+
+.manifesto {
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.6;
+    color: var(--color-text);
+    margin-bottom: 0;
+}
+
+/* ===================================
+   About Section
+   =================================== */
+
+#about p {
+    margin-bottom: 1.25rem;
+}
+
+#about p:last-child {
+    margin-bottom: 0;
+}
+
+/* ===================================
+   Newsletter Section - Terminal Style
+   =================================== */
+
+.newsletter-box {
+    background-color: var(--color-newsletter-bg);
+    padding: 32px;
+    border: 2px solid var(--color-terminal-green);
+    border-radius: 4px;
+    margin: var(--section-spacing) 0;
+    color: #FFFFFF;
+}
+
+.newsletter-box h2 {
+    font-family: var(--font-mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    color: #FFFFFF;
+}
+
+.newsletter-subtitle {
+    font-size: 1rem;
+    color: #CCCCCC;
+    margin-bottom: 1.5rem;
+}
+
+.cta-group {
+    display: flex;
+    gap: 0.75rem;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.newsletter-box .btn-primary {
+    background-color: var(--color-terminal-green);
+    color: #000000;
+    border: 2px solid var(--color-terminal-green);
+    font-weight: 600;
+}
+
+.newsletter-box .btn-primary:hover {
+    text-decoration: none;
+    opacity: 0.9;
+}
+
+.newsletter-box .btn-secondary {
+    background-color: transparent;
+    color: #FFFFFF;
+    border: 2px solid var(--color-terminal-green);
+}
+
+.newsletter-box .btn-secondary:hover {
+    text-decoration: none;
+    background-color: var(--color-terminal-green);
+    color: #000000;
+}
+
+/* ===================================
+   Timeline Section (Karpathy Style)
+   =================================== */
+
+.timeline-entry {
+    margin-bottom: 32px;
+    display: flex;
+    gap: 16px;
+}
+
+.timeline-entry:last-child {
+    margin-bottom: 0;
+}
+
+.timeline-date {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--color-text-secondary);
+    min-width: 140px;
+    flex-shrink: 0;
+    padding-top: 2px;
+}
+
+.timeline-content {
+    flex: 1;
+}
+
+.timeline-title {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    line-height: 1.4;
+}
+
+.timeline-title .org {
+    font-weight: 400;
+    color: var(--color-text-secondary);
+}
+
+.timeline-content p {
+    margin: 0;
+    line-height: 1.7;
+}
+
+/* ===================================
+   Publications Section
+   =================================== */
+
+.publications-list,
+.articles-list {
+    list-style: none;
+}
+
+.publications-list li {
+    margin-bottom: 0.75rem;
+}
+
+.publications-list li:last-child {
+    margin-bottom: 0;
+}
+
+.year {
+    color: var(--color-text-secondary);
+    font-weight: 400;
+}
+
+.articles-list li {
+    margin-bottom: 0.75rem;
+}
+
+.articles-list li:last-child {
+    margin-bottom: 0;
+}
+
+.articles-list .meta {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+/* ===================================
+   Speaking Section
+   =================================== */
+
+.speaking-list {
+    list-style: none;
+}
+
+.speaking-list li {
+    margin-bottom: 1.5rem;
+}
+
+.speaking-list li:last-child {
+    margin-bottom: 0;
+}
+
+.speaking-list strong {
+    font-weight: 600;
+}
+
+.speaking-list .meta {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+}
+
+.speaking-list p {
+    margin: 0.25rem 0 0;
+}
+
+/* ===================================
+   Contact Section
+   =================================== */
+
+.contact-links {
+    font-size: 1rem;
+}
+
+.contact-links a {
+    white-space: nowrap;
+}
+
+/* ===================================
+   Footer
+   =================================== */
+
+footer {
+    padding: 48px 0 32px;
+    border-top: 1px solid var(--color-border);
+    margin-top: var(--section-spacing);
+}
+
+footer p {
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+/* ===================================
+   Responsive - Mobile
+   =================================== */
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 24px;
+    }
+
+    header {
+        text-align: center;
+        padding-top: 40px;
+        padding-bottom: 40px;
+        max-height: none;
+    }
+
+    .profile-image {
+        float: none;
+        margin: 0 auto 16px;
+        display: block;
+    }
+
+    .header-text {
+        overflow: visible;
+    }
+
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .manifesto {
+        font-size: 1rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+
+    .timeline-entry {
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 28px;
+    }
+
+    .timeline-date {
+        min-width: auto;
+    }
+
+    .cta-group {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .newsletter-box {
+        padding: 24px;
+    }
+
+    :root {
+        --section-spacing: 48px;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0 20px;
+    }
+
+    header {
+        padding-top: 32px;
+        padding-bottom: 32px;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .manifesto {
+        font-size: 0.95rem;
+    }
+
+    h2 {
+        font-size: 1.15rem;
+    }
+
+    body {
+        font-size: 0.95rem;
+    }
+
+    .profile-image {
+        width: 110px;
+        height: 110px;
+    }
+
+    .newsletter-box {
+        padding: 20px;
+    }
+
+    :root {
+        --section-spacing: 40px;
+    }
+}
+
+/* ===================================
+   Accessibility
+   =================================== */
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+
+@media print {
+    header {
+        page-break-after: avoid;
+        max-height: none;
+    }
+
+    .btn {
+        display: none;
+    }
+
+    a {
+        color: var(--color-text);
+        text-decoration: underline;
+    }
+
+    .section {
+        margin-bottom: 32px;
+    }
+
+    .profile-image {
+        float: none;
+        margin: 0 auto 16px;
+        display: block;
+    }
+}
