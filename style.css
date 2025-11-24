@@ -248,10 +248,28 @@ header {
    Timeline Section (Karpathy Style)
    =================================== */
 
-.timeline-entry {
+#timeline h2 {
     margin-bottom: 32px;
-    display: flex;
-    gap: 16px;
+}
+
+.timeline-container {
+    position: relative;
+    min-height: 400px;
+}
+
+.timeline-line {
+    position: absolute;
+    left: 120px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background-color: #e0e0e0;
+}
+
+.timeline-entry {
+    position: relative;
+    margin-bottom: 56px;
+    min-height: 60px;
 }
 
 .timeline-entry:last-child {
@@ -259,35 +277,70 @@ header {
 }
 
 .timeline-date {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100px;
+    text-align: right;
     font-family: var(--font-mono);
-    font-size: 0.85rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    color: var(--color-text-secondary);
-    min-width: 140px;
-    flex-shrink: 0;
-    padding-top: 2px;
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #666666;
+    line-height: 1.7;
+}
+
+.timeline-dot {
+    position: absolute;
+    left: 115px;
+    top: 5px;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: #999999;
+    z-index: 1;
 }
 
 .timeline-content {
-    flex: 1;
-}
-
-.timeline-title {
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-    line-height: 1.4;
-}
-
-.timeline-title .org {
-    font-weight: 400;
-    color: var(--color-text-secondary);
-}
-
-.timeline-content p {
-    margin: 0;
+    margin-left: 140px;
     line-height: 1.7;
+}
+
+.timeline-logo {
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    margin-right: 16px;
+    vertical-align: middle;
+    object-fit: contain;
+}
+
+.timeline-logo-fallback {
+    display: inline-block;
+    width: 56px;
+    height: 56px;
+    margin-right: 16px;
+    vertical-align: middle;
+    text-align: center;
+    line-height: 56px;
+    font-size: 40px;
+}
+
+.timeline-text {
+    display: inline;
+    font-family: var(--font-stack);
+    font-size: 1rem;
+    font-weight: 400;
+    color: #1a1a1a;
+    line-height: 1.7;
+}
+
+.timeline-text a {
+    color: #0066cc;
+    text-decoration: none;
+}
+
+.timeline-text a:hover {
+    text-decoration: underline;
 }
 
 /* ===================================
@@ -301,17 +354,16 @@ header {
 .tags-container {
     display: flex;
     flex-wrap: wrap;
-    gap: 12px;
+    gap: 0;
 }
 
 .tag {
-    display: inline-block;
-    padding: 8px 16px;
-    border: 1px solid #666666;
-    border-radius: 4px;
-    font-size: 0.9rem;
+    display: inline;
+    font-family: var(--font-mono);
+    font-weight: 400;
+    font-size: 0.95rem;
     color: #666666;
-    font-family: var(--font-stack);
+    margin-right: 0.75rem;
 }
 
 /* ===================================
@@ -438,12 +490,35 @@ footer p {
 
     .timeline-entry {
         flex-direction: column;
-        gap: 8px;
-        margin-bottom: 28px;
+        margin-bottom: 32px;
     }
 
     .timeline-date {
-        min-width: auto;
+        width: auto;
+        text-align: left;
+        padding-right: 0;
+        margin-bottom: 8px;
+    }
+
+    .timeline-line-col {
+        display: none;
+    }
+
+    .timeline-content {
+        width: 100%;
+    }
+
+    .timeline-logo,
+    .timeline-logo-fallback {
+        width: 48px;
+        height: 48px;
+        margin-right: 12px;
+        font-size: 32px;
+        line-height: 48px;
+    }
+
+    .timeline-text {
+        font-size: 0.95rem;
     }
 
     .cta-group {
