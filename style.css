@@ -270,8 +270,12 @@ header {
     display: grid;
     grid-template-columns: 120px 40px 72px 1fr;
     gap: 0;
-    margin-bottom: 48px;
+    margin-bottom: 24px;
     align-items: start;
+}
+
+.timeline-entry.short {
+    align-items: center;
 }
 
 .timeline-entry:last-child {
@@ -312,7 +316,8 @@ header {
 .timeline-logo {
     width: 56px;
     height: 56px;
-    object-fit: contain;
+    object-fit: cover;
+    object-position: center;
     display: block;
 }
 
@@ -491,49 +496,70 @@ footer p {
         font-size: 1.2rem;
     }
 
+    /* Nascondi linea e pallini */
     .timeline-line {
         display: none;
-    }
-
-    .timeline-entry {
-        display: block;
-        margin-bottom: 32px;
-    }
-
-    .timeline-date {
-        text-align: left;
-        padding-right: 0;
-        margin-bottom: 8px;
-        display: block;
     }
 
     .timeline-dot-col {
         display: none;
     }
 
+    /* Timeline entry: da grid a flex verticale */
+    .timeline-entry {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        margin-bottom: 32px;
+        padding: 0;
+    }
+
+    .timeline-entry.short {
+        display: flex;
+        flex-direction: column;
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    /* Data */
+    .timeline-date {
+        font-size: 0.9rem;
+        color: #666;
+        text-align: left;
+        padding: 0;
+    }
+
+    .timeline-entry.short .timeline-date,
+    .timeline-entry.short .timeline-content {
+        text-align: left;
+        align-items: flex-start;
+    }
+
+    /* Logo più piccolo */
     .timeline-logo-col {
-        display: inline-block;
-        padding-top: 0;
-        vertical-align: middle;
+        display: block;
     }
 
-    .timeline-content {
-        display: inline;
+    .timeline-logo {
+        width: 48px;
+        height: 48px;
+        object-fit: cover;
     }
 
-    .timeline-logo,
     .timeline-logo-fallback {
         width: 48px;
         height: 48px;
-        font-size: 32px;
+        font-size: 36px;
         line-height: 48px;
-        margin-right: 12px;
-        vertical-align: middle;
+    }
+
+    /* Contenuto */
+    .timeline-content {
+        display: block;
     }
 
     .timeline-text {
         font-size: 0.95rem;
-        display: inline;
     }
 
     .cta-group {
