@@ -3,7 +3,9 @@
     "allow": [
       "WebFetch(domain:karpathy.ai)",
       "Bash(git add:*)",
-      "Bash(git commit:*)"
+      "Bash(git commit:*)",
+      "Bash(mkdir:*)",
+      "Bash(echo:*)"
     ],
     "deny": [],
     "ask": []
