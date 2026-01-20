@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Interviste - Video e conversazioni di Stefano Gatti">
+    <title>Interviste - Stefano Gatti</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Geist+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Reset & Base */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Variables */
+        :root {
+            --color-bg: #FFFFFF;
+            --color-text: #1a1a1a;
+            --color-text-secondary: #666666;
+            --color-accent: #0066cc;
+            --color-border: #e5e5e5;
+
+            --font-stack: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            --font-mono: 'Geist Mono', 'Courier New', monospace;
+
+            --max-width: 900px;
+            --section-spacing: 64px;
+        }
+
+        /* Typography */
+        body {
+            font-family: var(--font-stack);
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--color-text);
+            background-color: var(--color-bg);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h2 {
+            font-family: var(--font-mono);
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-top: 80px;
+            margin-bottom: 32px;
+            line-height: 1.3;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        /* Page Title */
+        .page-title {
+            font-family: var(--font-mono);
+            font-size: 36px;
+            font-weight: 500;
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+
+        h3 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        /* Links */
+        a {
+            color: var(--color-accent);
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Layout */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* Back Link */
+        .back-link {
+            display: inline-block;
+            padding: 32px 0 16px;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .back-link:hover {
+            color: var(--color-accent);
+        }
+
+        /* Video Item Layout */
+        .video-item {
+            display: flex;
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .video-thumb {
+            flex-shrink: 0;
+            width: 160px;
+        }
+
+        .video-thumb img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.2s ease;
+        }
+
+        .video-thumb img:hover {
+            opacity: 0.85;
+        }
+
+        .video-content {
+            flex: 1;
+        }
+
+        .video-content h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 0.25rem 0;
+            line-height: 1.3;
+        }
+
+        .video-content h3 a {
+            color: var(--color-text);
+            text-decoration: none;
+        }
+
+        .video-content h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .video-content .meta {
+            font-size: 0.85rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .video-content .description {
+            font-size: 0.95rem;
+            line-height: 1.6;
+            color: var(--color-text);
+        }
+
+        .video-content .description a {
+            color: var(--color-accent);
+        }
+
+        /* Series Layout (FrancoAngeli) */
+        .video-series {
+            margin-bottom: 60px;
+        }
+
+        .video-series h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin: 0 0 0.5rem 0;
+            line-height: 1.3;
+        }
+
+        .video-series .series-description {
+            font-size: 0.95rem;
+            color: var(--color-text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .series-thumbs {
+            display: flex;
+            gap: 16px;
+        }
+
+        .series-thumb {
+            width: 120px;
+            text-align: center;
+        }
+
+        .series-thumb img {
+            width: 100%;
+            height: auto;
+            border-radius: 4px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            transition: opacity 0.2s ease;
+            margin-bottom: 0.5rem;
+        }
+
+        .series-thumb img:hover {
+            opacity: 0.85;
+        }
+
+        .series-thumb a {
+            font-size: 0.8rem;
+            color: var(--color-accent);
+            display: block;
+            line-height: 1.3;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            h2 {
+                font-size: 1.15rem;
+                margin-top: 60px;
+                margin-bottom: 24px;
+            }
+
+            .video-item {
+                flex-direction: column;
+                gap: 12px;
+                margin-bottom: 48px;
+            }
+
+            .video-thumb {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .video-content h3 {
+                font-size: 1.05rem;
+            }
+
+            .video-content .description {
+                font-size: 0.9rem;
+            }
+
+            .series-thumbs {
+                flex-wrap: wrap;
+            }
+
+            .series-thumb {
+                width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 20px;
+            }
+
+            h2 {
+                font-size: 1.1rem;
+                margin-top: 48px;
+                margin-bottom: 20px;
+            }
+
+            .video-item {
+                margin-bottom: 40px;
+            }
+
+            .video-thumb {
+                max-width: 160px;
+            }
+
+            .video-content h3 {
+                font-size: 1rem;
+            }
+
+            .video-content .description {
+                font-size: 0.85rem;
+            }
+
+            .series-thumb {
+                width: 100px;
+            }
+
+            .series-thumb a {
+                font-size: 0.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Back Link -->
+        <a href="index.html" class="back-link">&larr; Home</a>
+
+        <h1 class="page-title">Video e interviste</h1>
+
+        <!-- Main Content -->
+        <main>
+            <!-- 2025 -->
+            <h2>2025</h2>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=oXt1c4I5i1s" target="_blank">
+                        <img src="https://img.youtube.com/vi/oXt1c4I5i1s/mqdefault.jpg" alt="Work After - Il futuro del lavoro nell'era AI">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=oXt1c4I5i1s" target="_blank">Work After - Il futuro del lavoro nell'era AI</a></h3>
+                    <div class="meta">2025</div>
+                    <div class="description">Conversazione sul futuro del lavoro e l'impatto dell'intelligenza artificiale sulle professioni e sulle organizzazioni.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=WGCzRbjULPA" target="_blank">
+                        <img src="https://img.youtube.com/vi/WGCzRbjULPA/mqdefault.jpg" alt="Risorse Artificiali - Podcast">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=WGCzRbjULPA" target="_blank">Risorse Artificiali - Podcast</a></h3>
+                    <div class="meta">2025</div>
+                    <div class="description">Intervista su dati, algoritmi e cultura organizzativa nel podcast Risorse Artificiali.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=X289ffpyyQw" target="_blank">
+                        <img src="https://img.youtube.com/vi/X289ffpyyQw/mqdefault.jpg" alt="Comunicare con i dati">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=X289ffpyyQw" target="_blank">Comunicare con i dati</a></h3>
+                    <div class="meta">2025</div>
+                    <div class="description">Chiacchierata con Santina Giannone, CEO di Reputation Lab, su come trasformare dati e analisi in narrative efficaci.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=5p1vbPqiZPE" target="_blank">
+                        <img src="https://img.youtube.com/vi/5p1vbPqiZPE/mqdefault.jpg" alt="La Cultura del Dato - Intervista ADV Media Lab">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=5p1vbPqiZPE" target="_blank">La Cultura del Dato - Intervista ADV Media Lab</a></h3>
+                    <div class="meta">2025</div>
+                    <div class="description">Intervista approfondita su dati, AI e innovazione. <a href="https://www.advmedialab.com/la-cultura-del-dato-intervista-a-stefano-gatti/" target="_blank">Leggi intervista completa &rarr;</a></div>
+                </div>
+            </div>
+
+            <!-- 2024 -->
+            <h2>2024</h2>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=OlDwGL4vPAw" target="_blank">
+                        <img src="https://img.youtube.com/vi/OlDwGL4vPAw/mqdefault.jpg" alt="DataMasters - Data strategy in Nexi">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=OlDwGL4vPAw" target="_blank">DataMasters - Data strategy in Nexi</a></h3>
+                    <div class="meta">2024</div>
+                    <div class="description">Conversazione sulla strategia dati e AI in Nexi, approccio "glocal" e costruzione di team data-driven.</div>
+                </div>
+            </div>
+
+            <!-- 2023 -->
+            <h2>2023</h2>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=N-fOheDS5Pg" target="_blank">
+                        <img src="https://img.youtube.com/vi/N-fOheDS5Pg/mqdefault.jpg" alt="IA Spiegata Semplice - Q&A">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=N-fOheDS5Pg" target="_blank">IA Spiegata Semplice - Q&A</a></h3>
+                    <div class="meta">2023</div>
+                    <div class="description">Domande e risposte sull'intelligenza artificiale: dalle basi ai casi d'uso, spiegati in modo accessibile.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=JMU6jiqJ1OE" target="_blank">
+                        <img src="https://img.youtube.com/vi/JMU6jiqJ1OE/mqdefault.jpg" alt="Python Biella Group - Talk tecnico">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=JMU6jiqJ1OE" target="_blank">Python Biella Group - Talk tecnico</a></h3>
+                    <div class="meta">2023</div>
+                    <div class="description">Presentazione tecnica per la community Python Biella su data science, algoritmi e applicazioni pratiche.</div>
+                </div>
+            </div>
+
+            <!-- 2022 -->
+            <h2>2022</h2>
+
+            <div class="video-series">
+                <h3>Serie FrancoAngeli - La Cultura del Dato</h3>
+                <div class="series-description">Serie in 3 parti presentando il libro con gli autori dei contributi</div>
+                <div class="series-thumbs">
+                    <div class="series-thumb">
+                        <a href="https://www.youtube.com/watch?v=VqVDL0UmrH0" target="_blank">
+                            <img src="https://img.youtube.com/vi/VqVDL0UmrH0/mqdefault.jpg" alt="Parte 1 - con Massimo Chiriatti">
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=VqVDL0UmrH0" target="_blank">Parte 1<br>Massimo Chiriatti</a>
+                    </div>
+                    <div class="series-thumb">
+                        <a href="https://www.youtube.com/watch?v=9So3yA3Dl8I" target="_blank">
+                            <img src="https://img.youtube.com/vi/9So3yA3Dl8I/mqdefault.jpg" alt="Parte 2 - con Marina Geymonat">
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=9So3yA3Dl8I" target="_blank">Parte 2<br>Marina Geymonat</a>
+                    </div>
+                    <div class="series-thumb">
+                        <a href="https://www.youtube.com/watch?v=zudNcofsuio" target="_blank">
+                            <img src="https://img.youtube.com/vi/zudNcofsuio/mqdefault.jpg" alt="Parte 3 - con Fabio Baraghini">
+                        </a>
+                        <a href="https://www.youtube.com/watch?v=zudNcofsuio" target="_blank">Parte 3<br>Fabio Baraghini</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2020 -->
+            <h2>2020</h2>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=UA3MWyjaQHo" target="_blank">
+                        <img src="https://img.youtube.com/vi/UA3MWyjaQHo/mqdefault.jpg" alt="Forum Banca 2020 - Trasformazione digitale">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=UA3MWyjaQHo" target="_blank">Forum Banca 2020 - Trasformazione digitale</a></h3>
+                    <div class="meta">2020</div>
+                    <div class="description">Intervento sulla trasformazione digitale nel settore bancario e l'evoluzione dei pagamenti.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=9_W5qZb9BXk" target="_blank">
+                        <img src="https://img.youtube.com/vi/9_W5qZb9BXk/mqdefault.jpg" alt="AI4Business - Machine Learning nel settore finanziario">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=9_W5qZb9BXk" target="_blank">AI4Business - Machine Learning nel settore finanziario</a></h3>
+                    <div class="meta">2020</div>
+                    <div class="description">Qual è il ruolo del Machine Learning nel settore finanziario? Casi d'uso, opportunità e sfide nell'applicazione dell'AI in ambito finance.</div>
+                </div>
+            </div>
+
+            <!-- 2019 -->
+            <h2>2019</h2>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=q8C71jfR1FM" target="_blank">
+                        <img src="https://img.youtube.com/vi/q8C71jfR1FM/mqdefault.jpg" alt="Città intelligenti e dati">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=q8C71jfR1FM" target="_blank">Città intelligenti e dati</a></h3>
+                    <div class="meta">2019</div>
+                    <div class="description">Come i dati e l'AI possono trasformare le città in ecosistemi più intelligenti e sostenibili.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=1sEMOdYIn_Q" target="_blank">
+                        <img src="https://img.youtube.com/vi/1sEMOdYIn_Q/mqdefault.jpg" alt="Presentazione libro #AI Expert">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=1sEMOdYIn_Q" target="_blank">Presentazione libro #AI Expert</a></h3>
+                    <div class="meta">2019 · Con Alessandro Giaume</div>
+                    <div class="description">Presentazione del libro #AI Expert con Alessandro Giaume. I nuovi ruoli dell'algorithm economy: competenze, strumenti e fattore umano.</div>
+                </div>
+            </div>
+
+            <!-- 2014-2018 - Era Cerved -->
+            <h2>2014-2018 - Era Cerved</h2>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=IIm_DJWwCMM" target="_blank">
+                        <img src="https://img.youtube.com/vi/IIm_DJWwCMM/mqdefault.jpg" alt="Data Science in Cerved">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=IIm_DJWwCMM" target="_blank">Data Science in Cerved</a></h3>
+                    <div class="meta">2014-2018</div>
+                    <div class="description">Introduzione ai dati Cerved, il ruolo del data scientist e come i database a grafo potenziano l'analisi dei dati per estrarre valore dal business.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=2b-zW_L6c7s" target="_blank">
+                        <img src="https://img.youtube.com/vi/2b-zW_L6c7s/mqdefault.jpg" alt="Big Data e Graph Database al servizio del business">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=2b-zW_L6c7s" target="_blank">Big Data e Graph Database al servizio del business</a></h3>
+                    <div class="meta">2014-2018</div>
+                    <div class="description">Come Cerved Group, data-driven company, ha sfruttato il graph database Neo4j per progetti di innovazione e per supportare le attività dei data scientist. Presentazione del progetto Graph4You: la complessa sfida di estrarre valore dai dati coinvolgendo differenti strati dell'organizzazione.</div>
+                </div>
+            </div>
+
+            <div class="video-item">
+                <div class="video-thumb">
+                    <a href="https://www.youtube.com/watch?v=3G0g4iIG3Eo" target="_blank">
+                        <img src="https://img.youtube.com/vi/3G0g4iIG3Eo/mqdefault.jpg" alt="Graph4You - Il prodotto che ho progettato in Cerved">
+                    </a>
+                </div>
+                <div class="video-content">
+                    <h3><a href="https://www.youtube.com/watch?v=3G0g4iIG3Eo" target="_blank">Graph4You - Il prodotto che ho progettato in Cerved</a></h3>
+                    <div class="meta">2014-2018 · Premio Digital360 Awards 2018</div>
+                    <div class="description">Graph4You, vincitore del premio Digital360 Awards 2018 (categoria Big Data Analytics), è il prodotto che ho ideato e sviluppato con il mio team di data scientist in Cerved. La soluzione storicizza i dati in un database a grafo, collegando diversi domini (Camera di Commercio, geolocalizzazione, proprietà immobiliari, PA, gruppi societari) per rendere esplicite, in frazioni di secondo, le relazioni implicite tra i soggetti. Un'unica vista a grafo che evidenzia situazioni problematiche in pratiche assicurative, gare d'appalto e indagini finanziarie.</div>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>
